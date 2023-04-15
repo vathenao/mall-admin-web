@@ -9,7 +9,7 @@
         <div style="text-align: center">
           <svg-icon icon-class="login-mall" style="width: 56px;height: 56px;color: #409EFF"></svg-icon>
         </div>
-        <h2 class="login-title color-main">mall-admin-web</h2>
+        <h2 class="login-title color-main">百家族谱</h2>
         <el-form-item prop="username">
           <el-input name="username"
                     type="text"
@@ -40,8 +40,8 @@
           <el-button style="width: 45%" type="primary" :loading="loading" @click.native.prevent="handleLogin">
             登录
           </el-button>
-          <el-button style="width: 45%" type="primary" @click.native.prevent="handleTry">
-            获取体验账号
+          <el-button style="width: 45%" type="primary" @click.native.prevent="handleRegister">
+            注册
           </el-button>
         </el-form-item>
       </el-form>
@@ -68,7 +68,8 @@
 <script>
   import {isvalidUsername} from '@/utils/validate';
   import {setSupport,getSupport,setCookie,getCookie} from '@/utils/support';
-  import login_center_bg from '@/assets/images/login_center_bg.png'
+  import login_center_bg from '@/assets/images/login_center_bg.png';
+  import router from '@/router/index'
 
   export default {
     name: 'login',
@@ -147,6 +148,25 @@
       handleTry(){
         this.dialogVisible =true
       },
+      handleRegister(){
+        router.push({path: '/register'})
+        //this.$router.push("/404")
+        /*
+        this.$refs.loginForm.validate(valid => {
+          if (valid) {
+            this.loading = true;
+            this.$store.dispatch('Register', this.loginForm).then(() => {
+              this.loading = false;
+            }).catch(() => {
+              this.loading = false
+            })
+          } else {
+            console.log('参数验证不合法！');
+            return false
+          }
+        })*/
+      },
+
       dialogConfirm(){
         this.dialogVisible =false;
         setSupport(true);

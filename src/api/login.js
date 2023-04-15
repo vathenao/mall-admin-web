@@ -2,10 +2,21 @@ import request from '@/utils/request'
 
 export function login(username, password) {
   return request({
-    url: '/admin/login',
+    url: '/user/login',
     method: 'post',
     data: {
       username,
+      password
+    }
+  })
+}
+
+export function register(name, password) {
+  return request({
+    url: '/user/register',
+    method: 'post',
+    data: {
+      name,
       password
     }
   })
